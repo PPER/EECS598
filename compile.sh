@@ -1,0 +1,1 @@
+g++ -o testlib test.cp ./html/CharsetConverter.cc ./html/Extensions.cc ./html/Node.cc ./html/ParserDom.cc ./html/ParserSax.cc 
