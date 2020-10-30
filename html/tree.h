@@ -305,7 +305,8 @@ class tree {
       // find a subtree
 //    template<class BinaryPredicate>
 //    iterator find_subtree(sibling_iterator, sibling_iterator, iterator from, iterator to, BinaryPredicate) const;
-      
+      //filter by class name
+      void     filter_by_class_name(string cls_name);
       // count the total number of nodes
       int      size() const;
       // check if tree is empty
@@ -352,25 +353,7 @@ class tree {
       };
 };
 
-//template <class T, class tree_node_allocator>
-//class iterator_base_less {
-// public:
-//    bool operator()(const typename tree<T, tree_node_allocator>::iterator_base& one,
-//                  const typename tree<T, tree_node_allocator>::iterator_base& two) const
-//       {
-//       txtout << "operatorclass<" << one.node < two.node << std::endl;
-//       return one.node < two.node;
-//       }
-//};
 
-//template <class T, class tree_node_allocator>
-//bool operator<(const typename tree<T, tree_node_allocator>::iterator& one,
-//             const typename tree<T, tree_node_allocator>::iterator& two)
-// {
-// txtout << "operator< " << one.node < two.node << std::endl;
-// if(one.node < two.node) return true;
-// return false;
-// }
 
 template <class T, class tree_node_allocator>
 bool operator>(const typename tree<T, tree_node_allocator>::iterator_base& one,
