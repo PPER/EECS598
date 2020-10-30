@@ -51,6 +51,8 @@
 #include <stdexcept>
 #include <iterator>
 #include <set>
+#include <string>
+using namespace std;
 
 // HP-style construct/destroy have gone from the standard,
 // so here is a copy.
@@ -1320,6 +1322,11 @@ void tree<T, tree_node_allocator>::swap(sibling_iterator it)
       }
    }
 
+template <class T, class tree_node_allocator>
+void tree<T, tree_node_allocator>::filter_by_class_name(string cls_name){
+   return;
+
+}
 // template <class BinaryPredicate>
 // tree<T, tree_node_allocator>::iterator tree<T, tree_node_allocator>::find_subtree(
 //    sibling_iterator subfrom, sibling_iterator subto, iterator from, iterator to, 
