@@ -1324,6 +1324,16 @@ void tree<T, tree_node_allocator>::swap(sibling_iterator it)
 
 template <class T, class tree_node_allocator>
 void tree<T, tree_node_allocator>::filter_by_class_name(string cls_name){
+   tree_node *pos=it.node->first_child;
+   if(pos==0) return;
+   tree_node * next_child
+   while(true){
+      if (pos=0)break;
+
+      next_child=pos->next_sibling;
+      filter_by_class_name()
+   }
+     
    return;
 
 }
