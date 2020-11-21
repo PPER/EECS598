@@ -34,7 +34,9 @@ namespace htmlcxx {
 
 				bool isComment() const { return this->mComment; }
 				void isComment(bool comment){ this->mComment = comment; }
-
+				// predicate functions
+				bool checkTagName(const std::string& tagname) { return this->mTagName == tagname; }
+				bool checkText(const std::string& text) { return this->mText == text; }
 				std::pair<bool, std::string> attribute(const std::string &attr) const
 				{ 
 					std::map<std::string, std::string>::const_iterator i = this->mAttributes.find(attr);

@@ -52,6 +52,7 @@
 #include <iterator>
 #include <set>
 #include <string>
+#include <vector>
 using namespace std;
 
 // HP-style construct/destroy have gone from the standard,
@@ -308,7 +309,7 @@ class tree {
 //    template<class BinaryPredicate>
 //    iterator find_subtree(sibling_iterator, sibling_iterator, iterator from, iterator to, BinaryPredicate) const;
       //filter by class name
-      void     filter_by_class_name(string cls_name);
+      //void     filter_by_class_name(string cls_name);
       // count the total number of nodes
       int      size() const;
       // check if tree is empty
@@ -319,6 +320,9 @@ class tree {
       unsigned int number_of_children(const iterator_base&) const;
       // count the number of 'next' siblings of node at iterator
       unsigned int number_of_siblings(const iterator_base&) const;
+
+      //paper
+      vector<tree_node*> all_nodes(const iterator_base&);
       // determine whether node at position is in the subtrees with root in the range
       bool     is_in_subtree(const iterator_base& position, const iterator_base& begin, 
                              const iterator_base& end) const;
@@ -1287,6 +1291,23 @@ unsigned int tree<T, tree_node_allocator>::number_of_children(const iterator_bas
    return ret;
    }
 
+//paper
+template <class T, class tree_node_allocator>
+vector<tree_node_<T>*> tree<T, tree_node_allocator>::all_nodes(const iterator_base& it){
+   vector<tree_node_<T>*> result = {};
+   result.push_back(it.node);
+   tree_node *pos=it.node->first_child;
+   if(pos==0) return result;
+   for(tree_node_<T>* node: all_nodes(pos)){
+      result.push_back(node);
+   }
+   while((pos=pos->next_sibling)){
+      for(tree_node_<T>* node: all_nodes(pos)){
+         result.push_back(node);
+      }
+   }
+   return result;
+}
 template <class T, class tree_node_allocator>
 unsigned int tree<T, tree_node_allocator>::number_of_siblings(const iterator_base& it) const
    {
@@ -1322,7 +1343,7 @@ void tree<T, tree_node_allocator>::swap(sibling_iterator it)
       }
    }
 
-template <class T, class tree_node_allocator>
+/* template <class T, class tree_node_allocator>
 void tree<T, tree_node_allocator>::filter_by_class_name(string cls_name){
    tree_node *pos=it.node->first_child;
    if(pos==0) return;
@@ -1336,7 +1357,7 @@ void tree<T, tree_node_allocator>::filter_by_class_name(string cls_name){
      
    return;
 
-}
+} */
 // template <class BinaryPredicate>
 // tree<T, tree_node_allocator>::iterator tree<T, tree_node_allocator>::find_subtree(
 //    sibling_iterator subfrom, sibling_iterator subto, iterator from, iterator to, 

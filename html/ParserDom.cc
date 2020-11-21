@@ -19,6 +19,8 @@ const tree<HTML::Node>& ParserDom::parseTree(const std::string &html)
 	this->parse(html);
 	return this->getTree();
 }
+
+
 void ParserDom::beginParsing()
 {
 	mHtmlTree.clear();

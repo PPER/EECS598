@@ -17,7 +17,7 @@ namespace htmlcxx
 				const tree<Node> &parseTree(const std::string &html);
 				const tree<Node> &getTree()
 				{ return mHtmlTree; }
-
+				
 			protected:
 				virtual void beginParsing();
 

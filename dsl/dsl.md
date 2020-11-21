@@ -1,9 +1,12 @@
+# DSL for HTML node selection
 Node[]      f :=    Filter(p, s) | Disj(f , ..., f )
 Node[]      s :=    AllNodes() | ChildrenOf(f )
                     | DescendantsOf(f ) | RightSiblingsOf(f )
-Node→Bool   p :=    Tag(t) | Class(t) | Id(t)
+Node→Bool   p :=    Tag(t) | Class(t) 
                     | NthChild(k) | NthLastChild(k)
-                    | IdSub(t) | Conjunction(p, p)
+                    | Conjunction(p, p)
+                    | CheckAttrList(al, al)
+(string,string) list    al
 DomTree inp     string t        int k
 
 # DSL for HTML node selection in paper
